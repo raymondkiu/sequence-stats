@@ -2,7 +2,7 @@
 Generate statistics from FASTQ and FASTA files. Also manipulate sequences such as renaming contigs and converting FASTQ to FASTA. Written in Bash. All in one place. Tested to analyse microbial/prokaryotic sequences.
 
 ## Installation
-Simply download the script and run in Linux environment. 
+No installation required. It is awk and grep based. Simply download/copy the script and run in Linux environment. 
 
 ## Usage
 ```
