@@ -96,7 +96,7 @@ If you use sequence-stats for results in your publication, please cite:
 * Kiu R, *sequence-stats*, **Github** `https://github.com/raymondkiu/sequence-stats`
 
 ## License
-[GPLv3](https://github.com/raymondkiu/sequence-stats/blob/master/LICENSE)
+sequence-stats is a free software licensed under [GPLv3](https://github.com/raymondkiu/sequence-stats/blob/master/LICENSE)
 
 ## Author
 Raymond Kiu | Raymond.Kiu@quadram.ac.uk | [@raymond_kiu](https://twitter.com/raymond_kiu)
