@@ -1,10 +1,13 @@
 # sequence-stats
 Generate statistics from FASTQ and FASTA files. Also manipulate sequences such as renaming contigs and converting FASTQ to FASTA. Written in Bash. All in one place. Tested to analyse microbial/prokaryotic sequences.
 
+If you are not a Python/Perl/C+ user but a newbie in bioinformatics, and would like to use a Linux-based software with no installation/special libraries/dependencies required, this is the right tool for you. For small microbial genomes, the efficiency of this software is comparable to Perl/Python-based scripts. Should generate outcome within a few seconds for each file.
+
 ## Installation
 No installation required. It is awk and grep based. Simply download/copy the script and run in Linux environment. 
 
 ## Usage
+Please note that sequence-stats does not handle gzipped inputs. Extensions such as .fasta, .fna or .fastq are not required.
 ```
 Usage: sequence-stats [options] FASTA/FASTQ
 
@@ -21,7 +24,7 @@ Options:
 ```
 
 #### Example 1: FASTA stats
-Use option -a to generate stats for FASTA files such as this genome sequence file. This format is grep-friendly, if you want a tabular format, see the next example, use option -b.
+Use option -a to generate stats for FASTA files such as this genome sequence file. This format is grep-friendly, if you want a tabular format, see the next example, use option -b. Tested for FASTA genome size > 10MB.
 ```
 $ ./sequence-stats -a CA.fna 
 Sample: CA-20.fna
@@ -49,6 +52,7 @@ CA-20.fna	2220029	17	62.76	18.45	18.78	31.02	31.73	360689	898564	792	10	.0004	5	
 ```
 
 #### Example 3: FASTQ stats
+sequence-stats generates basic FASTQ stats, mainly for you to determine to total read counts and bases also the read length. Also available in tabular format. Tested for fastq file size >300MB.
 ```
 $ ./sequence-stats -q V17.fastq 
 Sample: V17.fastq
@@ -61,6 +65,7 @@ Mean read length: 300.119
 ```
 
 #### Example 4: Individual contig's stats
+This option generates individual contig's length with contigs' IDs.
 ```
 $ ./sequence-stats -c CA.fna 
 
