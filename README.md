@@ -1,10 +1,10 @@
 # sequence-stats
-A fast and beginner-friendly program to generate statistics from FASTQ and FASTA files. Also manipulate sequences such as renaming contigs and converting FASTQ to FASTA. Written in Bash. All in one place. Tested to analyse microbial/prokaryotic sequences.
+A fast and beginner-friendly program to generate statistics from FASTQ and FASTA files. Also manipulate sequences such as renaming contigs, extract contigs and converting FASTQ to FASTA. Written in Bash, no specific dependencies required, should run without problems in Linux OS. All in one place. Tested to analyse microbial/prokaryotic sequences only, might not be able to handle super large files (>10GB) - may be taking too long to do that.
 
 If you are not a Python/Perl/C/C++ programmer but a newbie in bioinformatics, and would like to use a Linux-based software with no complex installation/special libraries/dependencies required, this is the right tool for you. For small microbial genomes, the efficiency of this software is comparable to Perl/Python-based tools. Should generate outcome within a few seconds for each file.
 
 ## Installation
-Simply download the package and run the binary in Unix environment. Source code is available in the src directory.
+Simply download the package and run the program in Unix environment. Source code is available in the src directory.
 
 ## Usage
 Please note that sequence-stats does not handle gzipped inputs. Extensions such as .fasta, .fna or .fastq are not required.
@@ -19,6 +19,8 @@ Options:
  -n Rename contigs. Usage: ./sequence-stats -n FASTA PREFIX > NEWFILENAME
  -b Print FASTA stats in tabular format
  -r Print FASTQ stats in tabular format
+ -e Extract contig(s) from FASTA sequences. Usage: ./sequence-stats -e CONTIG-IDs.txt FASTA > NEWFILENAME
+ -s Print summary of FASTA tabular stats of multiple files using common suffix. Usage: ./sequence-stats -s SUFFIX > NEWFILENAME
  -h Print usage and exit
  -v Print version and exit
 ```
