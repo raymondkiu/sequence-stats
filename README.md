@@ -95,7 +95,7 @@ Please report any issues to the [issues page](https://github.com/raymondkiu/sequ
 
 ## Citation
 If you use sequence-stats for results in your publication, please cite:
-* Kiu R, *sequence-stats: generate sequence statistics from FASTA and FASTQ files*, **GitHub** `https://github.com/raymondkiu/sequence-stats`, **DOI** 'https://doi.org/10.6084/m9.figshare.16950775'
+* Kiu R, *sequence-stats: generate sequence statistics from FASTA and FASTQ files*, **GitHub** `https://github.com/raymondkiu/sequence-stats`, **DOI** `https://doi.org/10.6084/m9.figshare.16950775`
 
 ## License
 sequence-stats is a free software licensed under [GPLv3](https://github.com/raymondkiu/sequence-stats/blob/master/LICENSE)
