@@ -1,5 +1,5 @@
 # sequence-stats
-A fast and beginner-friendly program to generate statistics from FASTQ and FASTA files. Also manipulate sequences such as renaming contigs, extract contigs and converting FASTQ to FASTA. Written in Bash, no specific dependencies required, should run without problems in Linux OS. All in one place. Tested to analyse microbial/prokaryotic sequences only, might not be able to handle super large files (>10GB) - may be taking too long to do that.
+A fast and beginner-friendly program to generate statistics from FASTQ and FASTA files, e.g. genome assembly sizes and GC content (%). Also manipulate sequences such as renaming contigs, extract contigs and converting FASTQ to FASTA. Written in Bash, no specific dependencies required, should run without problems in Linux OS. All in one place. Tested to analyse microbial/prokaryotic sequences only, might not be able to handle super large files (>10GB) - may be taking too long to do that.
 
 If you are not a Python/Perl/C/C++ programmer but a newbie in bioinformatics, and would like to use a Linux-based software with no complex installation/special libraries/dependencies required, this is the right tool for you. For small microbial genomes, the efficiency of this software is comparable to Perl/Python-based tools. Should generate outcome within a few seconds for each file.
 
