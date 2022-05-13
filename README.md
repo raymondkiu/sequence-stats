@@ -16,6 +16,7 @@ Options:
  -q Print FASTQ stats
  -t Convert FASTQ to FASTA. Usage: ./sequence-stats -t FASTQ > NEWFILENAME
  -c Print individual contig's stats (FASTA)
+ -d Dereplicate contigs in (multi)FASTA. Usage: ./sequence-stats -d FASTA > NEWFILENAME
  -n Rename contigs. Usage: ./sequence-stats -n FASTA PREFIX > NEWFILENAME
  -b Print FASTA stats in tabular format
  -r Print FASTQ stats in tabular format
@@ -23,6 +24,7 @@ Options:
  -s Print summary of FASTA tabular stats of multiple files using common suffix. Usage: ./sequence-stats -s SUFFIX > NEWFILENAME
  -h Print usage and exit
  -v Print version and exit
+
 ```
 
 #### Example 1: FASTA stats
