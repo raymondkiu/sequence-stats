@@ -2,7 +2,7 @@
 #print the options
 usage () {
   echo ""
-  echo "Sequence-stats generates statistics/manipulates sequences of FASTQ reads or FASTA assemblies"
+  echo "Sequence-stats generates statistics from FASTQ reads or FASTA assemblies"
   echo ""
   echo "For user manual please go to: https://github.com/raymondkiu/sequence-stats"
   echo ""
@@ -13,6 +13,7 @@ usage () {
   echo " -q Print FASTQ stats"
   echo " -t Convert FASTQ to FASTA. Usage: ./sequence-stats -t FASTQ > NEWFILENAME"
   echo " -c Print individual contig's stats (FASTA)"
+  echo " -d Dereplicate contigs in (multi)FASTA. Usage: ./sequence-stats -d FASTA > NEWFILENAME"
   echo " -n Rename contigs. Usage: ./sequence-stats -n FASTA PREFIX > NEWFILENAME"
   echo " -b Print FASTA stats in tabular format"
   echo " -r Print FASTQ stats in tabular format"
@@ -21,13 +22,13 @@ usage () {
   echo " -h Print usage and exit"
   echo " -v Print version and exit"
   echo ""
-  echo "Version 0.2 (2021)"
+  echo "Version 1.0 (2022)"
   echo "Author: Raymond Kiu Raymond.Kiu@quadram.ac.uk"
   echo "";
 }
 
 version (){
-echo "sequence-stats 0.2"
+echo "sequence-stats 1.0"
 }
 
 
@@ -120,6 +121,21 @@ sed -n '1~4s/^@/>/p;2~4p' $FILE
 contigstats (){
 awk '$0 ~ ">" {print c; c=0;printf substr($0,2,100) "\t"; } $0 !~ ">" {c+=length($0);} END { print c; }' $FILE
 }
+
+dereplicate (){
+if [ -e "$FILE" ];then
+:
+else
+    echo "$FILE file does not seem to exist. Program will now exit."
+    exit 1
+fi
+
+# Dereplicate contigs in AWK
+awk 'BEGIN {i = 1;} { if ($1 ~ /^>/) { tmp = h[i]; h[i] = $1; } else if (!a[$1]) { s[i] = $1; a[$1] = "1"; i++; } else { h[i] = tmp; } } END { for (j = 1; j < i; j++) { print h[j]; print s[j]; } }' $FILE
+
+exit 0
+}
+
 
 renamecontigs (){
 awk ' \
@@ -294,12 +310,13 @@ if [ $# -lt 1 ]; then
 fi
 
 # Call options
-while getopts ':aqtcnbreshv' opt;do
+while getopts ':aqtcdnbreshv' opt;do
   case $opt in
     a) fasta; exit;;
     q) fastq; exit;;
     t) fastq2fasta; exit;;
     c) contigstats; exit;;
+    d) dereplicate; exit;;
     n) renamecontigs; exit;;
     b) fastatabular; exit;;
     r) fastqtabular; exit;;
