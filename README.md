@@ -9,6 +9,10 @@ Simply download the package and run the program in Unix environment. Source code
 ## Usage
 Please note that sequence-stats does not handle gzipped inputs. Extensions such as .fasta, .fna or .fastq are not required.
 ```
+Sequence-stats generates statistics from FASTQ reads or FASTA assemblies
+
+For user manual please go to: https://github.com/raymondkiu/sequence-stats
+
 Usage: sequence-stats [options] FASTA/FASTQ
 
 Options:
@@ -22,6 +26,7 @@ Options:
  -r Print FASTQ stats in tabular format
  -e Extract contig(s) from FASTA sequences. Usage: ./sequence-stats -e CONTIG-IDs.txt FASTA > NEWFILENAME
  -s Print summary of FASTA tabular stats of multiple files using common suffix. Usage: ./sequence-stats -s SUFFIX > NEWFILENAME
+ -f Filter FASTA sequences by length. Usage: ./sequence-stats -f FASTA 500 > NEWFILENAME
  -h Print usage and exit
  -v Print version and exit
 
