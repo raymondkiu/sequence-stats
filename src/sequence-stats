@@ -304,7 +304,7 @@ else
     exit 1
 fi
 
-awk -v min="$name" 'BEGIN {RS = ">" ; ORS = ""} length($2) >= min {print ">"$0}' $FILE
+awk -v n=$name '/^>/{ if(l>n) print b; b=$0;l=0;next } {l+=length;b=b ORS $0}END{if(l>n) print b }' $FILE
 
 exit 0
 }
