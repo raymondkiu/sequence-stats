@@ -19,16 +19,17 @@ usage () {
   echo " -r Print FASTQ stats in tabular format"
   echo " -e Extract contig(s) from FASTA sequences. Usage: ./sequence-stats -e CONTIG-IDs.txt FASTA > NEWFILENAME"
   echo " -s Print summary of FASTA tabular stats of multiple files using common suffix. Usage: ./sequence-stats -s SUFFIX > NEWFILENAME"
+  echo " -f Filter FASTA sequences by length. Usage: ./sequence-stats -f FASTA 500 > NEWFILENAME"
   echo " -h Print usage and exit"
   echo " -v Print version and exit"
   echo ""
-  echo "Version 1.0 (2022)"
+  echo "Version 1.1 (2023)"
   echo "Author: Raymond Kiu Raymond.Kiu@quadram.ac.uk"
   echo "";
 }
 
 version (){
-echo "sequence-stats 1.0"
+echo "sequence-stats 1.1"
 }
 
 
@@ -295,6 +296,18 @@ cat *.$FILE|grep -v "Genome"
 exit 0
 }
 
+filtercontig (){
+if [ -e "$FILE" ];then
+:
+else
+    echo "$FILE file does not seem to exist. Program will now exit."
+    exit 1
+fi
+
+awk -v min="$name" 'BEGIN {RS = ">" ; ORS = ""} length($2) >= min {print ">"$0}' $FILE
+
+exit 0
+}
 
 
 # Skip over processed options
@@ -310,7 +323,7 @@ if [ $# -lt 1 ]; then
 fi
 
 # Call options
-while getopts ':aqtcdnbreshv' opt;do
+while getopts ':aqtcdnbresfhv' opt;do
   case $opt in
     a) fasta; exit;;
     q) fastq; exit;;
@@ -321,7 +334,8 @@ while getopts ':aqtcdnbreshv' opt;do
     b) fastatabular; exit;;
     r) fastqtabular; exit;;
     e) extractcontig; exit;;
-    s) fastasummarystats;exit;; 
+    s) fastasummarystats;exit;;
+    f) filtercontig;exit;; 
     h) usage; exit;;
     v) version; exit;;
     \?) echo "Invalid option: -$OPTARG" >&2; exit 1;;
@@ -348,3 +362,5 @@ fi
 #    exit 1
 #fi
 #exit 0
+~
+
