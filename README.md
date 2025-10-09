@@ -26,6 +26,7 @@ Options:
  -r Print FASTQ stats in tabular format
  -e Extract contig(s) from FASTA sequences. Usage: ./sequence-stats -e CONTIG-IDs.txt FASTA > NEWFILENAME
  -s Print summary of FASTA tabular stats of multiple files using common suffix. Usage: ./sequence-stats -s SUFFIX > NEWFILENAME
+ -S Sort contigs in the order from largest to smallest. Usage: ./sequence-stats -S FASTA
  -f Filter FASTA sequences by length. Usage: ./sequence-stats -f FASTA 500 > NEWFILENAME
  -h Print usage and exit
  -v Print version and exit
@@ -108,4 +109,4 @@ If you use sequence-stats for results in your publication, please cite:
 sequence-stats is a free software licensed under [GPLv3](https://github.com/raymondkiu/sequence-stats/blob/master/LICENSE)
 
 ## Author
-Raymond Kiu | Raymond.Kiu@quadram.ac.uk | [@raymond_kiu](https://twitter.com/raymond_kiu)
+Raymond Kiu | r.k.o.kiu@bham.ac.uk
