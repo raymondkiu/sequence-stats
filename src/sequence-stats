@@ -24,13 +24,13 @@ usage () {
   echo " -h Print usage and exit"
   echo " -v Print version and exit"
   echo ""
-  echo "Version 1.1 (2023)"
-  echo "Author: Raymond Kiu Raymond.Kiu@quadram.ac.uk"
+  echo "Version 1.2 (2025)"
+  echo "Author: Raymond Kiu r.k.o.kiu@bham.ac.uk"
   echo "";
 }
 
 version (){
-echo "sequence-stats 1.1"
+echo "sequence-stats 1.2"
 }
 
 
