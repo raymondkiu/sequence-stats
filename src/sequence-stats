@@ -20,6 +20,7 @@ usage () {
   echo " -e Extract contig(s) from FASTA sequences. Usage: ./sequence-stats -e CONTIG-IDs.txt FASTA > NEWFILENAME"
   echo " -s Print summary of FASTA tabular stats of multiple files using common suffix. Usage: ./sequence-stats -s SUFFIX > NEWFILENAME"
   echo " -f Filter FASTA sequences by length. Usage: ./sequence-stats -f FASTA 500 > NEWFILENAME"
+  echo " -S Sort contigs in the order from largest to smallest. Usage: ./sequence-stats -S FASTA"
   echo " -h Print usage and exit"
   echo " -v Print version and exit"
   echo ""
@@ -309,6 +310,13 @@ awk -v n=$name '/^>/{ if(l>n) print b; b=$0;l=0;next } {l+=length;b=b ORS $0}END
 exit 0
 }
 
+sortcontigs (){
+
+gawk 'BEGIN{RS=">";ORS=""}NR>1{n=index($0,"\n");h=substr($0,1,n-1);s=substr($0,n+1);t=s;gsub(/\n/,"",t);rec[NR-1]=">"
+h"\n"s;len[NR-1]=length(t)}END{m=asorti(len,idx,"@val_num_desc");for(i=1;i<=m;i++)print rec[idx[i]]}' $FILE
+
+exit 0
+}
 
 # Skip over processed options
 shift $((OPTIND-1))
@@ -323,7 +331,7 @@ if [ $# -lt 1 ]; then
 fi
 
 # Call options
-while getopts ':aqtcdnbresfhv' opt;do
+while getopts ':aqtcdnbresfShv' opt;do
   case $opt in
     a) fasta; exit;;
     q) fastq; exit;;
@@ -335,7 +343,8 @@ while getopts ':aqtcdnbresfhv' opt;do
     r) fastqtabular; exit;;
     e) extractcontig; exit;;
     s) fastasummarystats;exit;;
-    f) filtercontig;exit;; 
+    f) filtercontig;exit;;
+    S) sortcontigs;exit;;
     h) usage; exit;;
     v) version; exit;;
     \?) echo "Invalid option: -$OPTARG" >&2; exit 1;;
