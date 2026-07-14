@@ -315,8 +315,7 @@ exit 0
 
 sortcontigs (){
 
-gawk 'BEGIN{RS=">";ORS=""}NR>1{n=index($0,"\n");h=substr($0,1,n-1);s=substr($0,n+1);t=s;gsub(/\n/,"",t);rec[NR-1]=">"
-h"\n"s;len[NR-1]=length(t)}END{m=asorti(len,idx,"@val_num_desc");for(i=1;i<=m;i++)print rec[idx[i]]}' $FILE
+gawk 'BEGIN{RS=">";ORS=""}NR>1{n=index($0,"\n");h=substr($0,1,n-1);s=substr($0,n+1);t=s;gsub(/\n/,"",t);rec[NR-1]=">"h"\n"s;len[NR-1]=length(t)}END{m=asorti(len,idx,"@val_num_desc");for(i=1;i<=m;i++)print rec[idx[i]]}' $FILE
 
 exit 0
 }
